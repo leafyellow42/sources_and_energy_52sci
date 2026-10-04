@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수력 발전</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --paper: #ffffff;
+    --ink: #1f2328;
+    --ink-soft: #57606a;
+    --line: #e3e0d8;
+    --accent: #2f5d8a;
+    --accent-soft: #e8eff6;
+    --term: #fff3c4;
+    --glossary-bg: #fbf8ef;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-size: 18px;
+    line-height: 1.85;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px 16px 48px;
+  }
+
+  /* 상단: 처음으로 */
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+  }
+  .back:hover { background: var(--accent-soft); }
+
+  /* 제목 */
+  header { margin: 24px 0 8px; }
+  header .label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+  header h1 {
+    margin: 4px 0 0;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.25;
+  }
+
+  /* 본문 */
+  article {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 8px 28px 16px;
+    margin-top: 20px;
+  }
+  section { padding: 24px 0 8px; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  h2 .num {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    transform: translateY(-2px);
+  }
+  p { margin: 0 0 22px; }
+  .term {
+    font-weight: 700;
+    background: linear-gradient(transparent 55%, var(--term) 55%);
+    padding: 0 2px;
+  }
+
+  /* 사진 + 사진 설명 */
+  figure { margin: 0 0 14px; }
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .photo-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    border: 2px dashed #c9c4b8;
+    border-radius: 10px;
+    background: #efede7;
+    color: #8a8478;
+    font-size: 15px;
+    text-align: center;
+    padding: 16px;
+  }
+  figcaption {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* 낱말 풀이 */
+  .glossary {
+    margin-top: 28px;
+    background: var(--glossary-bg);
+    border: 1px solid var(--line);
+    border-left: 6px solid #d9b44a;
+    border-radius: 12px;
+    padding: 18px 22px 8px;
+  }
+  .glossary h3 {
+    margin: 0 0 10px;
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .glossary dl { margin: 0; }
+  .glossary .row {
+    display: grid;
+    grid-template-columns: 7.5em 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    border-top: 1px dashed var(--line);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .glossary .row:first-child { border-top: none; }
+  .glossary dt { font-weight: 700; }
+  .glossary dd { margin: 0; }
+
+  /* 출처 */
+  .sources {
+    margin-top: 28px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .sources h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .sources ol { margin: 0; padding-left: 1.4em; }
+  .sources a { color: var(--ink-soft); }
+
+  @media (max-width: 560px) {
+    body { font-size: 17px; }
+    header h1 { font-size: 32px; }
+    article { padding: 4px 18px 12px; }
+    h2 { font-size: 20px; }
+    .glossary { padding: 16px 16px 6px; }
+    .glossary .row { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="index.html">← 처음으로</a>
+
+  <header>
+    <div class="label">다양한 발전소를 알아볼까요?</div>
+    <h1>수력 발전</h1>
+  </header>
+
+  <!--
+    사진 넣는 방법
+    각 <figure> 안의 <div class="photo-slot">...</div> 한 줄을 지우고
+    <img src="images/사진파일이름.jpg" alt="사진 내용">  으로 바꾸세요.
+    (사진 파일은 저장소의 images 폴더에 올립니다.)
+    사진 설명은 <figcaption> 안의 글자를 고치면 됩니다.
+  -->
+
+  <article>
+
+    <section>
+      <h2><span class="num">1</span>수력 발전은 무엇일까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ①<br>높은 곳에서 떨어지는 물(폭포 등)</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>수력은 흐르는 물이 가진 힘을 말합니다. 물은 높은 곳에서 낮은 곳으로 떨어질 때 큰 힘을 냅니다. 수력 발전은 이 힘을 이용하여 전기를 만드는 방법입니다.</p>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ②<br>춘천 소양강댐</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>수력 발전을 하려면 많은 양의 물과 높이 차이가 필요합니다. 그래서 강을 가로막아 <span class="term">댐</span>을 쌓고 물을 모아 둡니다. 우리나라의 대표적인 댐인 강원도 춘천의 소양강댐은 1973년에 완공되었습니다. 이 댐은 전기를 만들 뿐 아니라 홍수를 막고 수도권에 물을 공급하는 역할도 합니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">2</span>물로 어떻게 전기를 만들까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ③<br>수력 발전 과정 그림<br>(댐에 모인 물 → 떨어지는 물 → 수차 → 발전기 → 송전선)</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>댐에 모인 물은 댐 위쪽과 아래쪽 사이에 큰 높이 차이를 만듭니다. 댐의 문을 열면 물이 관을 따라 아래로 세차게 흘러내립니다. 이 물이 <span class="term">수차</span>의 날개에 부딪히면서 수차를 회전시킵니다. 수차와 연결된 <span class="term">발전기</span>가 함께 회전하면서 전기가 생산됩니다. 수차는 물의 힘으로 돌아가는 <span class="term">터빈</span>입니다. 전기를 만들고 난 물은 다시 강으로 흘러갑니다.</p>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ④<br>양수 발전소의 위·아래 저수지</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p><span class="term">양수 발전</span>이라는 방법도 있습니다. 위아래에 저수지를 하나씩 만들어 두고, 전기가 남는 밤에는 그 전기로 아래 저수지의 물을 위로 끌어올립니다. 그리고 전기가 많이 필요한 낮에 물을 다시 흘려보내 전기를 만듭니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">3</span>수력 발전의 좋은 점은 무엇일까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ⑤<br>댐 수문에서 물을 흘려보내는 모습</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>수력 발전은 연료가 필요하지 않습니다. 물은 비와 눈으로 계속 채워지므로 사라지지 않습니다. 전기를 만드는 과정에서 이산화탄소나 대기 오염 물질을 배출하지 않습니다. 또한 물을 흘려보내기만 하면 되므로 몇 분 안에 발전을 시작하거나 멈출 수 있어, 갑자기 전기가 많이 필요할 때 빠르게 대응할 수 있습니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">4</span>수력 발전에서 생각해 볼 점은 무엇일까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ⑥<br>댐 건설로 물에 잠긴 지역 또는 물고기 길</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>댐을 쌓으면 넓은 땅이 물에 잠깁니다. 그 땅에 있던 마을, 논밭, 숲이 사라지고, 그곳에 살던 사람들은 다른 곳으로 이사해야 합니다. 또한 댐이 강을 가로막아 물고기가 강을 오르내리기 어려워지고, 강의 <span class="term">생태계</span>가 달라집니다. 수력 발전은 물이 많고 높이 차이가 큰 곳에서만 할 수 있어 설치 장소가 제한됩니다. 비가 적게 오는 해에는 발전량이 줄어듭니다.</p>
+    </section>
+
+  </article>
+
+  <aside class="glossary">
+    <h3>낱말 풀이</h3>
+    <dl>
+      <div class="row"><dt>댐</dt><dd>강을 가로막아 물을 모아 두는 큰 둑</dd></div>
+      <div class="row"><dt>수차</dt><dd>물의 힘을 받아 돌아가는 터빈</dd></div>
+      <div class="row"><dt>터빈</dt><dd>날개가 달린 회전 장치로, 수증기·바람·물의 힘을 받아 돌아감</dd></div>
+      <div class="row"><dt>발전기</dt><dd>회전하는 힘을 전기로 바꾸는 장치</dd></div>
+      <div class="row"><dt>양수 발전</dt><dd>물을 위로 끌어올려 두었다가 필요할 때 흘려보내 전기를 만드는 방법</dd></div>
+      <div class="row"><dt>생태계</dt><dd>한 장소에서 생물과 환경이 서로 영향을 주고받으며 이루는 전체</dd></div>
+    </dl>
+  </aside>
+
+  <footer class="sources">
+    <h3>출처</h3>
+    <ol>
+      <li>위키백과, 「소양강댐」. <a href="https://ko.wikipedia.org/wiki/%EC%86%8C%EC%96%91%EA%B0%95%EB%8C%90" target="_blank" rel="noopener">https://ko.wikipedia.org/wiki/%EC%86%8C%EC%96%91%EA%B0%95%EB%8C%90</a></li>
+      <li>서울신문(2023.3.10.), 「‘한강의 기적’부터 ‘수몰의 아픔’까지…‘반백살’ 소양강댐 명암」. <a href="https://www.seoul.co.kr/news/society/2023/03/10/20230310500158" target="_blank" rel="noopener">https://www.seoul.co.kr/news/society/2023/03/10/20230310500158</a></li>
+      <li>한국대댐회, 「한국의 댐 – 소양강다목적댐」. <a href="http://www.kncold.or.kr/content.php?contentCd=dam_of_kor_01" target="_blank" rel="noopener">http://www.kncold.or.kr/content.php?contentCd=dam_of_kor_01</a></li>
+    </ol>
+  </footer>
+
+</div>
+</body>
+</html>

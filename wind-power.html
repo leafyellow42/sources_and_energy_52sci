@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>풍력 발전</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --paper: #ffffff;
+    --ink: #1f2328;
+    --ink-soft: #57606a;
+    --line: #e3e0d8;
+    --accent: #2f5d8a;
+    --accent-soft: #e8eff6;
+    --term: #fff3c4;
+    --glossary-bg: #fbf8ef;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-size: 18px;
+    line-height: 1.85;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px 16px 48px;
+  }
+
+  /* 상단: 처음으로 */
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+  }
+  .back:hover { background: var(--accent-soft); }
+
+  /* 제목 */
+  header { margin: 24px 0 8px; }
+  header .label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+  header h1 {
+    margin: 4px 0 0;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.25;
+  }
+
+  /* 본문 */
+  article {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 8px 28px 16px;
+    margin-top: 20px;
+  }
+  section { padding: 24px 0 8px; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  h2 .num {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    transform: translateY(-2px);
+  }
+  p { margin: 0 0 22px; }
+  .term {
+    font-weight: 700;
+    background: linear-gradient(transparent 55%, var(--term) 55%);
+    padding: 0 2px;
+  }
+
+  /* 사진 + 사진 설명 */
+  figure { margin: 0 0 14px; }
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .photo-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    border: 2px dashed #c9c4b8;
+    border-radius: 10px;
+    background: #efede7;
+    color: #8a8478;
+    font-size: 15px;
+    text-align: center;
+    padding: 16px;
+  }
+  figcaption {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* 낱말 풀이 */
+  .glossary {
+    margin-top: 28px;
+    background: var(--glossary-bg);
+    border: 1px solid var(--line);
+    border-left: 6px solid #d9b44a;
+    border-radius: 12px;
+    padding: 18px 22px 8px;
+  }
+  .glossary h3 {
+    margin: 0 0 10px;
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .glossary dl { margin: 0; }
+  .glossary .row {
+    display: grid;
+    grid-template-columns: 7.5em 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    border-top: 1px dashed var(--line);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .glossary .row:first-child { border-top: none; }
+  .glossary dt { font-weight: 700; }
+  .glossary dd { margin: 0; }
+
+  /* 출처 */
+  .sources {
+    margin-top: 28px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .sources h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .sources ol { margin: 0; padding-left: 1.4em; }
+  .sources a { color: var(--ink-soft); }
+
+  @media (max-width: 560px) {
+    body { font-size: 17px; }
+    header h1 { font-size: 32px; }
+    article { padding: 4px 18px 12px; }
+    h2 { font-size: 20px; }
+    .glossary { padding: 16px 16px 6px; }
+    .glossary .row { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="index.html">← 처음으로</a>
+
+  <header>
+    <div class="label">다양한 발전소를 알아볼까요?</div>
+    <h1>풍력 발전</h1>
+  </header>
+
+  <!--
+    사진 넣는 방법
+    각 <figure> 안의 <div class="photo-slot">...</div> 한 줄을 지우고
+    <img src="images/사진파일이름.jpg" alt="사진 내용">  으로 바꾸세요.
+    (사진 파일은 저장소의 images 폴더에 올립니다.)
+    사진 설명은 <figcaption> 안의 글자를 고치면 됩니다.
+  -->
+
+  <article>
+
+    <section>
+      <h2><span class="num">1</span>풍력 발전은 무엇일까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ①<br>풍력 발전기</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>풍력은 바람이 가진 힘을 말합니다. 풍력 발전은 바람의 힘으로 커다란 날개를 회전시켜 전기를 만드는 방법입니다.</p>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ②<br>제주 탐라 해상 풍력 발전 단지</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>풍력 발전기는 바람이 강하고 꾸준히 부는 곳에 세웁니다. 우리나라에서는 강원도의 높은 산이나 제주도처럼 바람이 많이 부는 곳에 풍력 발전기가 있습니다. 최근에는 바다 위에 풍력 발전기를 세우는 <span class="term">해상 풍력</span>도 늘어나고 있습니다. 2017년 제주도 한경면 앞바다에는 우리나라 최초의 상업용 해상 풍력 발전 단지가 완공되었고, 이곳에는 풍력 발전기 10기가 서 있습니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">2</span>바람으로 어떻게 전기를 만들까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ③<br>풍력 발전기 날개를 옮기는 모습</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>풍력 발전기는 높은 기둥, 기둥 꼭대기의 몸체, 몸체에 달린 커다란 날개로 이루어져 있습니다. 날개 하나의 길이는 수십 미터에 이릅니다.</p>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ④<br>풍력 발전 과정 그림<br>(바람 → 날개 → 회전축 → 증속기 → 발전기 → 송전선)</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>바람이 불면 날개가 회전합니다. 날개는 몸체 안의 회전축과 연결되어 있어, 날개가 돌면 회전축도 함께 돕니다. 날개는 천천히 돌기 때문에, 몸체 안의 <span class="term">증속기</span>가 회전 속도를 빠르게 높여 줍니다. 빠르게 회전하는 힘이 <span class="term">발전기</span>에 전달되면 전기가 생산됩니다. 즉 풍력 발전기의 날개는 <span class="term">터빈</span>의 역할을 합니다. 생산된 전기는 송전선을 거쳐 가정과 학교로 공급됩니다. 풍력 발전기는 초속 3m 정도의 약한 바람에도 돌기 시작하며, 바람이 셀수록 더 많은 전기를 만듭니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">3</span>풍력 발전의 좋은 점은 무엇일까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ⑤<br>바다 위의 풍력 발전기</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>풍력 발전은 연료가 필요하지 않습니다. 바람은 돈을 내지 않고 얻을 수 있으며, 사라지지 않습니다. 전기를 만드는 과정에서 이산화탄소나 대기 오염 물질을 배출하지 않습니다. 바다 위에 세운 해상 풍력 발전기는 바다 밑에 박힌 구조물이 물고기가 모여 사는 장소가 되기도 합니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">4</span>풍력 발전에서 생각해 볼 점은 무엇일까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ⑥<br>산 능선에 늘어선 풍력 발전기</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>바람은 항상 일정하게 불지 않기 때문에 발전량이 날마다, 계절마다 크게 달라집니다. 그래서 바람이 약할 때를 대비한 다른 발전 방법이나 전기를 저장하는 장치가 함께 필요합니다. 풍력 발전기는 바람이 많이 부는 곳에만 세울 수 있어 설치 장소가 제한됩니다. 또한 날개가 돌 때 나는 소음, 날아가던 새가 날개에 부딪히는 문제, 자연 경관이 바뀌는 문제 때문에 주변 주민들이 설치를 반대하기도 합니다. 현재 우리나라에서 풍력으로 만드는 전기는 전체 전기의 1%가 되지 않습니다.</p>
+    </section>
+
+  </article>
+
+  <aside class="glossary">
+    <h3>낱말 풀이</h3>
+    <dl>
+      <div class="row"><dt>해상 풍력</dt><dd>바다 위에 풍력 발전기를 세워 전기를 만드는 방법</dd></div>
+      <div class="row"><dt>증속기</dt><dd>회전하는 속도를 빠르게 높여 주는 장치</dd></div>
+      <div class="row"><dt>터빈</dt><dd>날개가 달린 회전 장치로, 수증기·바람·물의 힘을 받아 돌아감</dd></div>
+      <div class="row"><dt>발전기</dt><dd>회전하는 힘을 전기로 바꾸는 장치</dd></div>
+    </dl>
+  </aside>
+
+  <footer class="sources">
+    <h3>출처</h3>
+    <ol>
+      <li>국민일보, 「반대하던 주민들 설득 9년… ‘지역과 화합모델’ 전형 만들어」. <a href="https://m.kmib.co.kr/view.asp?arcid=0924264642" target="_blank" rel="noopener">https://m.kmib.co.kr/view.asp?arcid=0924264642</a></li>
+      <li>뉴스핌(2019.11.29.), 「[르포] 新친환경에너지 '탐라해상풍력'…수중생태·제주도민에게 '온기'」. <a href="https://www.newspim.com/news/view/20191129000780" target="_blank" rel="noopener">https://www.newspim.com/news/view/20191129000780</a></li>
+      <li>더팩트, 「[르포] 국내 최초 '해상풍력' 7년째…상권 살아나고 어획량 늘어」. <a href="https://news.tf.co.kr/read/economy/2087264.htm" target="_blank" rel="noopener">https://news.tf.co.kr/read/economy/2087264.htm</a></li>
+      <li>ZDNet Korea, 「[르포] 국내 첫 상업용 해상풍력 ‘탐라해상풍력’…민관공 벤치마킹 줄이어」. <a href="https://zdnet.co.kr/view/?no=20240401074406" target="_blank" rel="noopener">https://zdnet.co.kr/view/?no=20240401074406</a></li>
+      <li>Wikipedia, 「Wind power in South Korea」. <a href="https://en.wikipedia.org/wiki/Wind_power_in_South_Korea" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Wind_power_in_South_Korea</a></li>
+    </ol>
+  </footer>
+
+</div>
+</body>
+</html>

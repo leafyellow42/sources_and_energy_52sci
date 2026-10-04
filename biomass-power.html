@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>바이오매스 발전</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --paper: #ffffff;
+    --ink: #1f2328;
+    --ink-soft: #57606a;
+    --line: #e3e0d8;
+    --accent: #2f5d8a;
+    --accent-soft: #e8eff6;
+    --term: #fff3c4;
+    --glossary-bg: #fbf8ef;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-size: 18px;
+    line-height: 1.85;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px 16px 48px;
+  }
+
+  /* 상단: 처음으로 */
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+  }
+  .back:hover { background: var(--accent-soft); }
+
+  /* 제목 */
+  header { margin: 24px 0 8px; }
+  header .label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+  header h1 {
+    margin: 4px 0 0;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.25;
+  }
+
+  /* 본문 */
+  article {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 8px 28px 16px;
+    margin-top: 20px;
+  }
+  section { padding: 24px 0 8px; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  h2 .num {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    transform: translateY(-2px);
+  }
+  p { margin: 0 0 22px; }
+  .term {
+    font-weight: 700;
+    background: linear-gradient(transparent 55%, var(--term) 55%);
+    padding: 0 2px;
+  }
+
+  /* 사진 + 사진 설명 */
+  figure { margin: 0 0 14px; }
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .photo-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    border: 2px dashed #c9c4b8;
+    border-radius: 10px;
+    background: #efede7;
+    color: #8a8478;
+    font-size: 15px;
+    text-align: center;
+    padding: 16px;
+  }
+  figcaption {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* 낱말 풀이 */
+  .glossary {
+    margin-top: 28px;
+    background: var(--glossary-bg);
+    border: 1px solid var(--line);
+    border-left: 6px solid #d9b44a;
+    border-radius: 12px;
+    padding: 18px 22px 8px;
+  }
+  .glossary h3 {
+    margin: 0 0 10px;
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .glossary dl { margin: 0; }
+  .glossary .row {
+    display: grid;
+    grid-template-columns: 7.5em 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    border-top: 1px dashed var(--line);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .glossary .row:first-child { border-top: none; }
+  .glossary dt { font-weight: 700; }
+  .glossary dd { margin: 0; }
+
+  /* 출처 */
+  .sources {
+    margin-top: 28px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .sources h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .sources ol { margin: 0; padding-left: 1.4em; }
+  .sources a { color: var(--ink-soft); }
+
+  @media (max-width: 560px) {
+    body { font-size: 17px; }
+    header h1 { font-size: 32px; }
+    article { padding: 4px 18px 12px; }
+    h2 { font-size: 20px; }
+    .glossary { padding: 16px 16px 6px; }
+    .glossary .row { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="index.html">← 처음으로</a>
+
+  <header>
+    <div class="label">다양한 발전소를 알아볼까요?</div>
+    <h1>바이오매스 발전</h1>
+  </header>
+
+  <!--
+    사진 넣는 방법
+    각 <figure> 안의 <div class="photo-slot">...</div> 한 줄을 지우고
+    <img src="images/사진파일이름.jpg" alt="사진 내용">  으로 바꾸세요.
+    (사진 파일은 저장소의 images 폴더에 올립니다.)
+    사진 설명은 <figcaption> 안의 글자를 고치면 됩니다.
+  -->
+
+  <article>
+
+    <section>
+      <h2><span class="num">1</span>바이오매스는 무엇일까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ①<br>목재 펠릿</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>바이오매스는 식물이나 동물에서 나온 물질 가운데 에너지로 쓸 수 있는 것을 말합니다. 나무 조각, 톱밥, 볏짚, 음식물 쓰레기, 가축의 똥과 오줌 등이 모두 바이오매스입니다. 나무를 잘게 부순 뒤 높은 압력으로 눌러 작은 원통 모양으로 만든 것을 <span class="term">목재 펠릿</span>이라고 하는데, 바이오매스 발전에 많이 쓰이는 연료입니다.</p>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ②<br>강릉 영동에코발전본부</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>우리나라의 대표적인 바이오매스 발전소는 강원도 강릉에 있는 영동에코발전본부입니다. 이 발전소는 처음에는 석탄 발전소로 세워졌으나, 2017년과 2020년에 연료를 목재 펠릿으로 바꾸었습니다. 이곳에서는 한 해에 약 100만 톤의 목재 펠릿을 사용합니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">2</span>바이오매스로 어떻게 전기를 만들까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ③<br>바이오매스 발전 과정 그림<br>(목재 펠릿 → 보일러 → 수증기 → 터빈 → 발전기 → 송전선)</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>바이오매스로 전기를 만드는 방법은 두 가지입니다. 첫째, 바이오매스를 직접 태우는 방법입니다. 목재 펠릿이나 나무 조각을 <span class="term">보일러</span> 안에서 태워 물을 끓이면 온도와 압력이 높은 수증기가 만들어집니다. 이 수증기가 <span class="term">터빈</span>을 회전시키고, 터빈과 연결된 <span class="term">발전기</span>가 함께 회전하면서 전기가 생산됩니다.</p>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ④<br>바이오가스를 만드는 시설</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>둘째, 바이오매스를 썩힐 때 나오는 가스를 이용하는 방법입니다. 음식물 쓰레기나 가축의 똥과 오줌을 공기가 없는 큰 통에 넣어 두면 <span class="term">미생물</span>이 이를 분해하면서 <span class="term">바이오가스</span>가 생깁니다. 이 가스를 모아 태워서 전기를 만듭니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">3</span>바이오매스 발전의 좋은 점은 무엇일까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ⑤<br>볏짚, 나무 조각 등 버려지는 재료</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>바이오매스 발전은 버려지는 물질을 연료로 사용하므로 쓰레기를 줄이는 효과가 있습니다. 나무와 풀은 베어 내도 다시 심어 기를 수 있으므로 연료를 계속 얻을 수 있습니다. 또한 식물은 자라는 동안 공기 중의 이산화탄소를 흡수합니다. 그래서 바이오매스를 태울 때 나오는 이산화탄소는 식물이 흡수했던 것을 다시 내보내는 것이라고 보기도 합니다. 날씨나 시간의 영향을 받지 않고 전기를 생산할 수 있다는 점도 장점입니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">4</span>바이오매스 발전에서 생각해 볼 점은 무엇일까요?</h2>
+
+      <figure>
+        <div class="photo-slot">사진 자리 ⑥<br>나무를 베어 낸 숲</div>
+        <figcaption>사진 설명을 입력하세요.</figcaption>
+      </figure>
+      <p>바이오매스를 태울 때에도 <span class="term">이산화탄소</span>와 미세먼지가 나옵니다. 베어 낸 나무가 다시 그만큼 자라려면 수십 년이 걸리는데, 그동안에는 공기 중의 이산화탄소가 늘어난 상태로 남습니다. 연료를 마련하기 위해 숲의 나무를 지나치게 많이 베어 내면 숲이 훼손될 수 있습니다. 또한 우리나라에서 발전에 쓰는 목재 펠릿은 대부분 외국에서 수입하는데, 먼 거리를 배로 운반하는 과정에서도 에너지가 쓰입니다. 이러한 문제 때문에 우리나라는 수입한 목재 펠릿으로 만든 전기에 대한 지원을 줄여 나가고 있습니다.</p>
+    </section>
+
+  </article>
+
+  <aside class="glossary">
+    <h3>낱말 풀이</h3>
+    <dl>
+      <div class="row"><dt>목재 펠릿</dt><dd>나무를 잘게 부순 뒤 눌러서 작은 원통 모양으로 만든 연료</dd></div>
+      <div class="row"><dt>보일러</dt><dd>연료를 태워 물을 끓이는 큰 장치</dd></div>
+      <div class="row"><dt>터빈</dt><dd>날개가 달린 회전 장치로, 수증기·바람·물의 힘을 받아 돌아감</dd></div>
+      <div class="row"><dt>발전기</dt><dd>회전하는 힘을 전기로 바꾸는 장치</dd></div>
+      <div class="row"><dt>미생물</dt><dd>눈으로 볼 수 없을 만큼 작은 생물</dd></div>
+      <div class="row"><dt>바이오가스</dt><dd>음식물 쓰레기나 가축의 똥과 오줌이 썩을 때 생기는 불에 타는 기체</dd></div>
+      <div class="row"><dt>이산화탄소</dt><dd>물질이 탈 때 생기는 기체로, 눈에 보이지 않음</dd></div>
+    </dl>
+  </aside>
+
+  <footer class="sources">
+    <h3>출처</h3>
+    <ol>
+      <li>SBS 뉴스, 「수입 펠릿 제한…지역 발전소 위기」. <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1008023701" target="_blank" rel="noopener">https://news.sbs.co.kr/news/endPage.do?news_id=N1008023701</a></li>
+      <li>강원일보, 「영동에코발전본부 “수입산 목재펠릿 사용 못하면 가동 중단 우려”」. <a href="https://m.kwnews.co.kr/page/view/2025022710480449602" target="_blank" rel="noopener">https://m.kwnews.co.kr/page/view/2025022710480449602</a></li>
+      <li>전기신문, 「에너지 전환과 환경 우려 사이…바이오매스 REC의 딜레마」. <a href="https://www.electimes.com/news/articleView.html?idxno=364387" target="_blank" rel="noopener">https://www.electimes.com/news/articleView.html?idxno=364387</a></li>
+      <li>전기신문, 「“수입 목재펠릿 REC 감축? 발전소 닫으라는 말” 발전업계 반발」. <a href="https://www.electimes.com/news/articleView.html?idxno=350192" target="_blank" rel="noopener">https://www.electimes.com/news/articleView.html?idxno=350192</a></li>
+    </ol>
+  </footer>
+
+</div>
+</body>
+</html>

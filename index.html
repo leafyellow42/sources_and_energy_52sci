@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>다양한 발전소를 알아볼까요?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --paper: #ffffff;
+    --ink: #1f2328;
+    --ink-soft: #57606a;
+    --line: #e3e0d8;
+    --accent: #2f5d8a;
+    --accent-soft: #e8eff6;
+    --term: #fff3c4;
+    --glossary-bg: #fbf8ef;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-size: 18px;
+    line-height: 1.85;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px 16px 48px;
+  }
+
+  /* 상단: 처음으로 */
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+  }
+  .back:hover { background: var(--accent-soft); }
+
+  /* 제목 */
+  header { margin: 24px 0 8px; }
+  header .label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+  header h1 {
+    margin: 4px 0 0;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.25;
+  }
+
+  /* 본문 */
+  article {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 8px 28px 16px;
+    margin-top: 20px;
+  }
+  section { padding: 24px 0 8px; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  h2 .num {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    transform: translateY(-2px);
+  }
+  p { margin: 0 0 22px; }
+  .term {
+    font-weight: 700;
+    background: linear-gradient(transparent 55%, var(--term) 55%);
+    padding: 0 2px;
+  }
+
+  /* 사진 + 사진 설명 */
+  figure { margin: 0 0 14px; }
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .photo-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    border: 2px dashed #c9c4b8;
+    border-radius: 10px;
+    background: #efede7;
+    color: #8a8478;
+    font-size: 15px;
+    text-align: center;
+    padding: 16px;
+  }
+  figcaption {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* 낱말 풀이 */
+  .glossary {
+    margin-top: 28px;
+    background: var(--glossary-bg);
+    border: 1px solid var(--line);
+    border-left: 6px solid #d9b44a;
+    border-radius: 12px;
+    padding: 18px 22px 8px;
+  }
+  .glossary h3 {
+    margin: 0 0 10px;
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .glossary dl { margin: 0; }
+  .glossary .row {
+    display: grid;
+    grid-template-columns: 7.5em 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    border-top: 1px dashed var(--line);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .glossary .row:first-child { border-top: none; }
+  .glossary dt { font-weight: 700; }
+  .glossary dd { margin: 0; }
+
+  /* 출처 */
+  .sources {
+    margin-top: 28px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .sources h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .sources ol { margin: 0; padding-left: 1.4em; }
+  .sources a { color: var(--ink-soft); }
+
+  @media (max-width: 560px) {
+    body { font-size: 17px; }
+    header h1 { font-size: 32px; }
+    article { padding: 4px 18px 12px; }
+    h2 { font-size: 20px; }
+    .glossary { padding: 16px 16px 6px; }
+    .glossary .row { grid-template-columns: 1fr; gap: 2px; }
+  }
+
+  .home-header { margin: 28px 0 8px; text-align: center; }
+  .home-header h1 { margin: 0; font-size: 36px; font-weight: 900; line-height: 1.3; }
+  .home-header p { margin: 10px 0 0; color: var(--ink-soft); font-size: 17px; }
+  .home-photo { margin: 24px 0 8px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+  }
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 76px;
+    padding: 16px 20px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: transform .12s ease, border-color .12s ease, background .12s ease;
+  }
+  .card:hover, .card:focus-visible {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateY(-2px);
+    outline: none;
+  }
+  .card { justify-content: flex-start; gap: 14px; }
+  .card .name { flex: 1; }
+  .card .icon {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+  .card .arrow { color: var(--accent); font-size: 18px; flex: none; }
+  @media (max-width: 560px) {
+    .home-header h1 { font-size: 28px; }
+    .grid { gap: 10px; }
+    .card { font-size: 16px; padding: 12px; min-height: 64px; gap: 10px; }
+    .card .icon { width: 40px; height: 40px; }
+    .card .arrow { display: none; }
+    .card .icon svg { width: 26px; height: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="home-header">
+    <h1>다양한 발전소를 알아볼까요?</h1>
+    <p>알아보고 싶은 발전소를 골라 눌러 보세요.</p>
+  </header>
+
+  <nav class="grid">
+    <a class="card" href="gas-power.html" target="_top"><span class="icon" style="background:#2563eb1f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M12 2.5c1.2 3.2 5.5 5.6 5.5 10.2a5.5 5.5 0 0 1-11 0c0-2.6 1.4-4.3 2.6-5.8.1 2 .9 3.2 2.1 3.6-.4-2.9.6-5.4.8-8z" fill="#2563eb"/><path d="M12 12.5c.7 1.4 2.4 2.2 2.4 4a2.4 2.4 0 0 1-4.8 0c0-1.3.9-2 1.4-2.8.2.7.5 1 1 1.2 0-.9-.1-1.7 0-2.4z" fill="#93c5fd"/></svg></span><span class="name">가스 발전</span><span class="arrow">→</span></a>
+    <a class="card" href="biomass-power.html" target="_top"><span class="icon" style="background:#16a34a1f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M4.5 19.5C4.5 10.5 10.5 4.5 20 4.5c0 9.5-6 15.5-15 15.5z" fill="#16a34a"/><path d="M5.5 18.5 15 9" stroke="#dcfce7" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></span><span class="name">바이오매스 발전</span><span class="arrow">→</span></a>
+    <a class="card" href="oil-power.html" target="_top"><span class="icon" style="background:#44403c1f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M12 2.8S5.8 10 5.8 14.3a6.2 6.2 0 0 0 12.4 0C18.2 10 12 2.8 12 2.8z" fill="#292524"/><ellipse cx="9.6" cy="14.6" rx="1.2" ry="2" fill="#a8a29e"/></svg></span><span class="name">석유 발전</span><span class="arrow">→</span></a>
+    <a class="card" href="coal-power.html" target="_top"><span class="icon" style="background:#4b55631f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M3.5 18.5 6 12.5l4-1.5 2.5 3-1 4.5z" fill="#374151"/><path d="M10.5 18.5l1.5-5.5 4.5-2.5 4 3.5-1 4.5z" fill="#4b5563"/><path d="M7.5 11.5 9.5 6.5l4-1 2 3.5-3 2.5-2.5-.5z" fill="#6b7280"/></svg></span><span class="name">석탄 발전</span><span class="arrow">→</span></a>
+    <a class="card" href="hydro-power.html" target="_top"><span class="icon" style="background:#0d94881f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M3 9h7v11H3z" fill="#5eead4"/><path d="M10 4h4l2 16h-6z" fill="#64748b"/><path d="M16.5 12c1.5 0 1.5 2 3 2s1.5-2 3-2M16.5 16c1.5 0 1.5 2 3 2s1.5-2 3-2" stroke="#0d9488" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></span><span class="name">수력 발전</span><span class="arrow">→</span></a>
+    <a class="card" href="nuclear-power.html" target="_top"><span class="icon" style="background:#7c3aed1f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><g fill="none" stroke="#7c3aed" stroke-width="1.6"><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/></g><circle cx="12" cy="12" r="2" fill="#7c3aed"/></svg></span><span class="name">원자력 발전</span><span class="arrow">→</span></a>
+    <a class="card" href="geothermal-power.html" target="_top"><span class="icon" style="background:#dc26261f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M2.5 20.5 9 10.5h6l6.5 10z" fill="#c2410c"/><path d="M9 10.5h6l-1.2 2.2h-3.6z" fill="#f97316"/><path d="M9.5 7.5c-.8-1 .8-2 0-3M12 7.5c-.8-1 .8-2 0-3M14.5 7.5c-.8-1 .8-2 0-3" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></span><span class="name">지열 발전</span><span class="arrow">→</span></a>
+    <a class="card" href="solar-power.html" target="_top"><span class="icon" style="background:#d977061f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><circle cx="12" cy="12" r="4.5" fill="#f59e0b"/><g stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></g></svg></span><span class="name">태양광 발전</span><span class="arrow">→</span></a>
+    <a class="card" href="wind-power.html" target="_top"><span class="icon" style="background:#0284c71f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M12 11v10.5" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/><path d="M12 10.5 11 2.5c1.6.2 2.4 3.5 1 8z" fill="#0ea5e9"/><path d="M12 10.5l7.4 3.1c-.6 1.5-4 1.1-7.4-3.1z" fill="#0ea5e9"/><path d="M12 10.5l-6.4 4.9c-.9-1.3 1.6-3.7 6.4-4.9z" fill="#0ea5e9"/><circle cx="12" cy="10.5" r="1.4" fill="#0369a1"/></svg></span><span class="name">풍력 발전</span><span class="arrow">→</span></a>
+    <a class="card" href="ocean-power.html" target="_top"><span class="icon" style="background:#1d4ed81f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M2.5 9c2.4 0 2.4-2 4.8-2s2.4 2 4.7 2 2.4-2 4.7-2 2.4 2 4.8 2M2.5 14c2.4 0 2.4-2 4.8-2s2.4 2 4.7 2 2.4-2 4.7-2 2.4 2 4.8 2M2.5 19c2.4 0 2.4-2 4.8-2s2.4 2 4.7 2 2.4-2 4.7-2 2.4 2 4.8 2" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></span><span class="name">해양 에너지 발전</span><span class="arrow">→</span></a>
+  </nav>
+
+</div>
+</body>
+</html>
