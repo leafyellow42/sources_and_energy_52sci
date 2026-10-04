@@ -201,10 +201,9 @@
 
   <!--
     사진 넣는 방법
-    각 <figure> 안의 <div class="photo-slot">...</div> 한 줄을 지우고
-    <img src="images/사진파일이름.jpg" alt="사진 내용">  으로 바꾸세요.
-    (사진 파일은 저장소의 images 폴더에 올립니다.)
-    사진 설명은 <figcaption> 안의 글자를 고치면 됩니다.
+    images 폴더에 'solar-번호.jpg' 이름으로 사진을 올리면 해당 번호 자리에 자동으로 나타납니다.
+    (예: solar-1.jpg → 사진 자리 ①) jpg, jpeg, png, webp 모두 됩니다.
+    사진 설명은 각 <figcaption> 안의 글자를 고치면 됩니다.
   -->
 
   <article>
@@ -213,14 +212,14 @@
       <h2><span class="num">1</span>태양광 발전은 무엇일까요?</h2>
 
       <figure>
-        <div class="photo-slot">사진 자리 ①<br>가까이에서 본 태양광 패널</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
+        <img data-photo="images/solar-1" data-remote="https://i.namu.wiki/i/MzT6ugu_F6eqiQn0vWyQgvCseQXxj32w4w51Hl7IV7OmqtoFcEoRWy7mUyVQ3j_jyc5Vz6RXuQyNpYNZX-fDiQ.webp" alt="가까이에서 본 태양광 패널" referrerpolicy="no-referrer" hidden><div class="photo-slot">가까이에서 본 태양광 패널</div>
+        <figcaption>가까이에서 본 태양광 패널 (사진: 나무위키)</figcaption>
       </figure>
       <p>태양광 발전은 햇빛을 이용하여 전기를 만드는 방법입니다. 태양광 발전에는 <span class="term">태양광 패널</span>이 쓰입니다. 태양광 패널은 햇빛을 받으면 전기가 만들어지는 특별한 판입니다.</p>
 
       <figure>
-        <div class="photo-slot">사진 자리 ②<br>신안 태양광 발전단지</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
+        <img data-photo="images/solar-2" data-remote="https://pimg.mk.co.kr/news/cms/202306/12/20230612_01110301000002_L01.jpg" alt="신안 태양광 발전단지" referrerpolicy="no-referrer" hidden><div class="photo-slot">신안 태양광 발전단지</div>
+        <figcaption>신안 태양광 발전단지 (사진: 매일경제)</figcaption>
       </figure>
       <p>태양광 패널은 크기를 자유롭게 조절할 수 있어 다양한 곳에 설치됩니다. 우리나라에는 21만 곳이 넘는 태양광 발전소가 있으며, 대부분은 건물 지붕이나 빈 땅에 설치된 작은 규모의 발전소입니다. 대규모 발전소로는 전라남도 신안군의 신안 태양광 발전단지가 있습니다. 이 발전단지는 과거 소금을 만들던 <span class="term">염전</span> 자리에 세워졌습니다.</p>
     </section>
@@ -229,8 +228,8 @@
       <h2><span class="num">2</span>태양광으로 어떻게 전기를 만들까요?</h2>
 
       <figure>
-        <div class="photo-slot">사진 자리 ③<br>태양광 발전 과정 그림<br>(햇빛 → 태양광 패널 → 건물 또는 송전선)</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
+        <img src="images/solar-process.png" alt="태양광 발전 과정 그림">
+        <figcaption>태양광 발전 과정</figcaption>
       </figure>
       <p>태양광 발전에는 터빈과 발전기가 필요하지 않습니다. 태양광 패널이 햇빛을 전기로 직접 바꾸기 때문입니다. 먼저 태양광 패널을 햇빛이 잘 드는 곳에 설치합니다. 패널은 햇빛을 최대한 많이 받을 수 있도록 남쪽을 향해 비스듬히 기울여 설치합니다. 패널이 햇빛을 받으면 전기가 만들어집니다. 이 전기는 그 건물에서 바로 쓰거나, 송전선을 거쳐 다른 곳으로 공급됩니다.</p>
     </section>
@@ -239,8 +238,8 @@
       <h2><span class="num">3</span>태양광 발전의 좋은 점은 무엇일까요?</h2>
 
       <figure>
-        <div class="photo-slot">사진 자리 ④<br>건물 지붕이나 주차장 위의 태양광 패널</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
+        <img data-photo="images/solar-4" data-remote="https://flexible.img.hani.co.kr/flexible/normal/970/841/imgdb/original/2025/0502/20250502501501.jpg" alt="건물 지붕이나 주차장 위의 태양광 패널" referrerpolicy="no-referrer" hidden><div class="photo-slot">건물 지붕이나 주차장 위의 태양광 패널</div>
+        <figcaption>건물 지붕이나 주차장 위의 태양광 패널 (사진: 한겨레)</figcaption>
       </figure>
       <p>태양광 발전은 연료가 필요하지 않습니다. 햇빛은 돈을 내지 않고 얻을 수 있으며, 사라지지 않습니다. 전기를 만드는 과정에서 이산화탄소나 대기 오염 물질을 배출하지 않습니다. 또한 회전하는 부품이 없어 소음이 거의 없고, 건물 지붕, 주차장, 저수지 위 등 다양한 곳에 설치할 수 있습니다.</p>
     </section>
@@ -249,8 +248,8 @@
       <h2><span class="num">4</span>태양광 발전에서 생각해 볼 점은 무엇일까요?</h2>
 
       <figure>
-        <div class="photo-slot">사진 자리 ⑤<br>산을 깎아 설치한 태양광 발전소</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
+        <img data-photo="images/solar-5" data-remote="https://cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/LVAQIGDKKFANPCMYAZAEZQQXLM.jpg" alt="산을 깎아 설치한 태양광 발전소" referrerpolicy="no-referrer" hidden><div class="photo-slot">산을 깎아 설치한 태양광 발전소</div>
+        <figcaption>산을 깎아 설치한 태양광 발전소 (사진: 조선일보)</figcaption>
       </figure>
       <p>태양광 발전은 해가 진 밤에는 전기를 만들 수 없고, 흐리거나 비가 오는 날에는 발전량이 크게 줄어듭니다. 그래서 낮에 만든 전기를 저장해 두었다가 필요할 때 쓰는 장치가 함께 필요합니다. 또한 많은 전기를 얻으려면 넓은 땅이 필요합니다. 산을 깎아 태양광 패널을 설치하면 숲이 훼손되고, 비가 많이 올 때 흙이 무너져 내릴 위험이 커집니다. 수명이 다한 태양광 패널을 어떻게 처리하고 재활용할지도 해결해야 할 과제입니다.</p>
     </section>
@@ -274,5 +273,17 @@
   </footer>
 
 </div>
+
+<script>
+/* 사진 연결: images 폴더에 '페이지-번호' 이름의 사진이 있으면 그것을, 없으면 data-remote 주소의 사진을 보여 줍니다. */
+document.querySelectorAll('img[data-photo]').forEach(function (img) {
+  var srcs = ['jpg', 'jpeg', 'png', 'webp'].map(function (e) { return img.getAttribute('data-photo') + '.' + e; });
+  if (img.getAttribute('data-remote')) srcs.push(img.getAttribute('data-remote'));
+  var i = 0, slot = img.nextElementSibling;
+  img.onload = function () { img.hidden = false; if (slot && slot.classList.contains('photo-slot')) slot.remove(); };
+  img.onerror = function () { if (i < srcs.length) img.src = srcs[i++]; };
+  img.onerror();
+});
+</script>
 </body>
 </html>

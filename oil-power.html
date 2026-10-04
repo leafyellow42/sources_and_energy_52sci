@@ -201,10 +201,9 @@
 
   <!--
     사진 넣는 방법
-    각 <figure> 안의 <div class="photo-slot">...</div> 한 줄을 지우고
-    <img src="images/사진파일이름.jpg" alt="사진 내용">  으로 바꾸세요.
-    (사진 파일은 저장소의 images 폴더에 올립니다.)
-    사진 설명은 <figcaption> 안의 글자를 고치면 됩니다.
+    images 폴더에 'oil-번호.jpg' 이름으로 사진을 올리면 해당 번호 자리에 자동으로 나타납니다.
+    (예: oil-1.jpg → 사진 자리 ①) jpg, jpeg, png, webp 모두 됩니다.
+    사진 설명은 각 <figcaption> 안의 글자를 고치면 됩니다.
   -->
 
   <article>
@@ -213,21 +212,17 @@
       <h2><span class="num">1</span>석유는 무엇일까요?</h2>
 
       <figure>
-        <div class="photo-slot">사진 자리 ①<br>원유를 뽑아 올리는 시설</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
+        <img data-photo="images/oil-1" data-remote="https://img.khan.co.kr/news/2010/11/21/20101122.01200116000003.02L.jpg" alt="원유를 뽑아 올리는 시설" referrerpolicy="no-referrer" hidden><div class="photo-slot">원유를 뽑아 올리는 시설</div>
+        <figcaption>원유를 뽑아 올리는 시설 (사진: 경향신문)</figcaption>
       </figure>
       <p>석유는 땅속 깊은 곳에서 뽑아 올리는 검은색 액체 연료입니다. 수억 년 전 바다에 살던 매우 작은 생물들이 죽어 바다 밑바닥에 쌓인 뒤, 오랜 시간 높은 열과 압력을 받아 석유로 변했습니다. 이처럼 과거의 생물이 땅속에서 변해 만들어진 연료를 <span class="term">화석 연료</span>라고 합니다.</p>
 
       <figure>
-        <div class="photo-slot">사진 자리 ②<br>정유 공장</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
+        <img data-photo="images/oil-2" data-remote="https://blog.lgchem.com/wp-content/uploads/2015/05/150528_oil_01.jpg" alt="정유 공장" referrerpolicy="no-referrer" hidden><div class="photo-slot">정유 공장</div>
+        <figcaption>정유 공장 (사진: LG화학 블로그)</figcaption>
       </figure>
       <p>땅속에서 뽑아 올린 그대로의 석유를 <span class="term">원유</span>라고 합니다. 원유를 정유 공장에서 가열하면 휘발유, 경유, 등유, 중유 등으로 나뉩니다. 휘발유는 자동차의 연료로, 등유는 난로의 연료로 쓰이며, 플라스틱과 합성 섬유도 석유로 만듭니다.</p>
 
-      <figure>
-        <div class="photo-slot">사진 자리 ③<br>1970년대 석유 가격이 크게 올랐을 때의 모습</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
-      </figure>
       <p>예전에는 석유로 많은 전기를 만들었지만, 1970년대에 석유 가격이 크게 오르는 일이 두 차례 일어난 뒤로 석유 발전은 점차 줄어들었습니다. 오늘날 우리나라 육지에서는 석유로 전기를 거의 만들지 않습니다.</p>
     </section>
 
@@ -235,15 +230,11 @@
       <h2><span class="num">2</span>석유로 어떻게 전기를 만들까요?</h2>
 
       <figure>
-        <div class="photo-slot">사진 자리 ④<br>석유 발전 과정 그림<br>(석유 → 보일러 → 수증기 → 터빈 → 발전기 → 송전선)</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
+        <img src="images/oil-process.png" alt="석유 발전 과정 그림">
+        <figcaption>석유 발전 과정</figcaption>
       </figure>
       <p>석유로 전기를 만드는 방법은 두 가지입니다. 첫째, 중유를 <span class="term">보일러</span> 안에서 태워 물을 끓이는 방법입니다. 물이 끓으면 온도와 압력이 높은 수증기가 만들어집니다. 이 수증기가 <span class="term">터빈</span>을 회전시키고, 터빈과 연결된 <span class="term">발전기</span>가 함께 회전하면서 전기가 생산됩니다.</p>
 
-      <figure>
-        <div class="photo-slot">사진 자리 ⑤<br>섬의 엔진 발전기(울릉도·백령도 등)</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
-      </figure>
       <p>둘째, <span class="term">엔진</span>을 이용하는 방법입니다. 자동차의 엔진처럼 경유를 태워 엔진을 움직이고, 엔진이 발전기를 직접 회전시켜 전기를 만듭니다. 이 방법은 육지와 송전선이 연결되지 않은 섬에서 주로 사용합니다. 울릉도와 백령도 같은 섬에서는 배로 실어 온 경유로 엔진 발전기를 가동하여 섬 전체에 전기를 공급합니다.</p>
     </section>
 
@@ -251,8 +242,8 @@
       <h2><span class="num">3</span>석유 발전의 좋은 점은 무엇일까요?</h2>
 
       <figure>
-        <div class="photo-slot">사진 자리 ⑥<br>기름을 실어 나르는 배 또는 유조차</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
+        <img data-photo="images/oil-6" data-remote="https://i.namu.wiki/i/REj00L03tCF4bO4NhKaxqT5L7x9WhvjWHJLRAk61hSq7GHvcHWnFbXAlNT8zkx4uYc7RNubyqHO3ra8BYnCUbw.webp" alt="기름을 실어 나르는 배" referrerpolicy="no-referrer" hidden><div class="photo-slot">기름을 실어 나르는 배</div>
+        <figcaption>기름을 실어 나르는 배 (사진: 나무위키)</figcaption>
       </figure>
       <p>석유는 액체이므로 운반하고 저장하기 쉽습니다. 배나 차로 실어 먼 섬까지도 옮길 수 있습니다. 엔진 발전기는 크기가 작아 좁은 곳에도 설치할 수 있고, 필요할 때 빠르게 가동하거나 멈출 수 있습니다. 또한 날씨나 시간의 영향을 받지 않고 전기를 생산할 수 있습니다.</p>
     </section>
@@ -261,8 +252,8 @@
       <h2><span class="num">4</span>석유 발전에서 생각해 볼 점은 무엇일까요?</h2>
 
       <figure>
-        <div class="photo-slot">사진 자리 ⑦<br>2007년 태안 기름 유출 사고 방제 작업</div>
-        <figcaption>사진 설명을 입력하세요.</figcaption>
+        <img data-photo="images/oil-7" data-remote="https://www.ccnnews.co.kr/news/photo/202212/278182_347065_1816.png" alt="2007년 태안 기름 유출 사고 당시 해안" referrerpolicy="no-referrer" hidden><div class="photo-slot">2007년 태안 기름 유출 사고 당시 해안</div>
+        <figcaption>2007년 태안 기름 유출 사고 당시 해안 (사진: ccnnews.co.kr)</figcaption>
       </figure>
       <p>석유를 태우면 <span class="term">이산화탄소</span>와 대기 오염 물질이 배출됩니다. 또한 우리나라는 원유를 거의 모두 외국에서 수입하는데, 석유 가격은 세계 여러 나라의 상황에 따라 크게 오르내립니다. 석유를 배로 운반하다가 사고가 나면 바다로 기름이 흘러나와 바다 생물과 해안이 큰 피해를 입기도 합니다. 2007년 충청남도 태안 앞바다에서 일어난 기름 유출 사고가 대표적인 예입니다.</p>
     </section>
@@ -291,5 +282,17 @@
   </footer>
 
 </div>
+
+<script>
+/* 사진 연결: images 폴더에 '페이지-번호' 이름의 사진이 있으면 그것을, 없으면 data-remote 주소의 사진을 보여 줍니다. */
+document.querySelectorAll('img[data-photo]').forEach(function (img) {
+  var srcs = ['jpg', 'jpeg', 'png', 'webp'].map(function (e) { return img.getAttribute('data-photo') + '.' + e; });
+  if (img.getAttribute('data-remote')) srcs.push(img.getAttribute('data-remote'));
+  var i = 0, slot = img.nextElementSibling;
+  img.onload = function () { img.hidden = false; if (slot && slot.classList.contains('photo-slot')) slot.remove(); };
+  img.onerror = function () { if (i < srcs.length) img.src = srcs[i++]; };
+  img.onerror();
+});
+</script>
 </body>
 </html>
