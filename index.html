@@ -182,12 +182,30 @@
 
 
   .counter {
-    margin-top: 36px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: fit-content;
+    margin: 36px auto 0;
+    padding: 12px 20px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
   }
-  .counter img { display: inline-block; height: 22px; vertical-align: middle; }
+  .counter .icon {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+  }
+  .counter .text { font-size: 15px; font-weight: 700; color: var(--ink); }
+  .counter img { display: block; height: 26px; border-radius: 8px; }
   @media (max-width: 560px) {
     body { font-size: 17px; }
     header h1 { font-size: 32px; }
@@ -274,9 +292,11 @@
     <a class="card" href="ocean-power.html" target="_top"><span class="icon" style="background:#1d4ed81f" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M2.5 9c2.4 0 2.4-2 4.8-2s2.4 2 4.7 2 2.4-2 4.7-2 2.4 2 4.8 2M2.5 14c2.4 0 2.4-2 4.8-2s2.4 2 4.7 2 2.4-2 4.7-2 2.4 2 4.8 2M2.5 19c2.4 0 2.4-2 4.8-2s2.4 2 4.7 2 2.4-2 4.7-2 2.4 2 4.8 2" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></span><span class="name">해양 에너지 발전</span><span class="arrow">→</span></a>
   </nav>
 
-  <!-- 방문자 수: hits.sh 무료 카운터(페이지를 열 때마다 1씩 늘어남). 왼쪽은 오늘, 오른쪽은 전체 방문 수 -->
+  <!-- 방문자 수: hits.sh 무료 카운터(홈 화면을 열 때마다 1씩 늘어남) -->
   <footer class="counter">
-    <img src="https://hits.sh/leafyellow42.github.io/sources_and_energy_52sci.svg?view=today-total&amp;label=%EB%B0%A9%EB%AC%B8%EC%9E%90%20(%EC%98%A4%EB%8A%98%2F%EC%A0%84%EC%B2%B4)&amp;color=2f5d8a&amp;labelColor=57606a" alt="방문자 수">
+    <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="9" cy="8" r="3.5" fill="#2f5d8a"/><path d="M2.5 19.5c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6z" fill="#2f5d8a"/><circle cx="17" cy="9" r="2.8" fill="#7ea3c7"/><path d="M15.2 13.7c3.5-.6 6.3 1.6 6.3 5.8h-4.4c0-2.3-.7-4.3-1.9-5.8z" fill="#7ea3c7"/></svg></span>
+    <span class="text">지금까지 방문한 횟수</span>
+    <img src="https://hits.sh/leafyellow42.github.io/sources_and_energy_52sci.svg?view=total&amp;style=flat-square&amp;label=%EC%B4%9D&amp;color=2f5d8a&amp;labelColor=e8eff6" alt="누적 방문 수">
   </footer>
 
 </div>
